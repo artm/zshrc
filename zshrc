@@ -20,15 +20,22 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
 
-AGNOSTER_PROMPT_SEGMENTS=(prompt_status prompt_kube_ctx prompt_dir prompt_git prompt_end)
-
-prompt_kube_ctx() {
-  local ctx=$(awk '/current-context/{print $2;}' < ~/.kube/config)
-  local bg="yellow"
-  local fg="black"
-  [[ $ctx = production ]] && bg="red" && fg="yellow"
-  prompt_segment $bg $fg " $ctx "
-}
+AGNOSTER_PROMPT_SEGMENTS=(prompt_status)
+if [[ -f ~/.kube/config ]] ; then
+  prompt_kube_ctx() {
+    local ctx=$(awk '/current-context/{print $2;}' < ~/.kube/config)
+    local bg="yellow"
+    local fg="black"
+    [[ $ctx = production ]] && bg="red" && fg="yellow"
+    prompt_segment $bg $fg " $ctx "
+  }
+  AGNOSTER_PROMPT_SEGMENTS+=(prompt_kube_ctx)
+fi
+AGNOSTER_PROMPT_SEGMENTS+=(
+  prompt_dir
+  prompt_git
+  prompt_end
+)
 
 # Make zsh friendlier to rake arguments (rake foo[bar])
 unsetopt nomatch
