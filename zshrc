@@ -1,4 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$(dirname $(readlink ~/.zshrc))"
 
 plugins=(
   docker
@@ -10,4 +11,3 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
