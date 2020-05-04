@@ -2,6 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$(dirname $(readlink ~/.zshrc))"
 
 plugins=(
+  ansible
   docker
   docker-compose
   git
