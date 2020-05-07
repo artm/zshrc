@@ -9,6 +9,7 @@ plugins=(
   gitfast
   helm
   kubectl
+  terraform
 )
 
 source $ZSH/oh-my-zsh.sh
