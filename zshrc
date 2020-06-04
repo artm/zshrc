@@ -9,6 +9,7 @@ plugins=(
   gitfast
   helm
   kubectl
+  ssh-agent
   terraform
 )
 
